@@ -1,0 +1,11 @@
+<h1>Message Board? Question Board? I Don't Know Anymore.</h1>
+
+<ul>
+  {{#each question in model}}
+    <li>{{#link-to 'question' question.id}}{{question.question}}{{/link-to}} - {{question.author}}</li>
+  {{/each}}
+</ul>
+
+<p>
+  {{#link-to 'new-question' classNames="btn btn-primary"}}Ask a New Question{{/link-to}}
+</p>
