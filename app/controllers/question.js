@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
   isEditing: false,
+  isAnswering: false,
   actions: {
     edit: function() {
       this.set('isEditing', true);
@@ -15,6 +16,10 @@ export default Ember.ObjectController.extend({
         this.get('model').destroyRecord();
         this.transitionToRoute('questions');
       }
+    },
+
+    addAnswer: function() {
+      this.set('isAnswering', true);
     },
     deleteanswer: function() {
       if(confirm('Are You Sure?')) {

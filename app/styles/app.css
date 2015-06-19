@@ -1,3 +1,7 @@
 body {
   margin-top: 70px;
 }
+
+.author-indent {
+  padding-left: 40px;
+}

@@ -1,0 +1,9 @@
+<form>
+  <div class="form-group">
+    <label for="answerAuthor">Responded by:</label>
+    {{input id="answerAuthor" class="form-control" value=answerAuthor}}<br>
+    <label for="answer">Answer:</label>
+    {{input id="answer" class="form-control" value=response}}
+  </div>
+  <button class="btn btn-primary" {{action 'submit'}}>Submit Answer</button>
+</form>

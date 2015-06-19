@@ -1,12 +1,12 @@
-<h1>{{model.question}}</h1>
+<h2>{{model.question}}</h2>
 
 {{#if isEditing}}
   <form>
     <div class="form-group">
-      <label for="question">question</label>
+      <label for="question">Question:</label>
       {{input id="question" class="form-control" value=question}}
       <br>
-      <label for="description">Description</label>
+      <label for="description">Description:</label>
       {{textarea id="description" class="form-control" value=description}}
     </div>
 
@@ -15,9 +15,7 @@
 
 
 {{else}}
-  <h1>{{model.question}}</h1>
-
-  <h2>by {{model.author}}</h2>
+  <h5 class="author-indent"> - Asked by {{model.author}}</h5>
 
   <hr>
 
@@ -30,3 +28,13 @@
 
 
 <button class="btn btn-danger" {{action 'delete'}}>Delete Question</button>
+<br><hr><br>
+<ul>
+  {{#each answer in model.answers}}
+    <li>{{#link-to 'answer' answer.id}}{{answer.answer}}{{/link-to}}</li>
+  {{/each}}
+</ul>
+
+
+<p>{{#link-to 'new-answer' model.id class="btn btn-info"}}Respond to Question{{/link-to}}</p>
+{{outlet}}
