@@ -5,3 +5,11 @@ body {
 .author-indent {
   padding-left: 40px;
 }
+
+.question {
+  width: 60%;
+}
+
+.answer {
+  width: 40%;
+}

@@ -1,40 +1,50 @@
 <h2>{{model.question}}</h2>
 
-{{#if isEditing}}
-  <form>
-    <div class="form-group">
-      <label for="question">Question:</label>
-      {{input id="question" class="form-control" value=question}}
+<div class="row">
+  <div class="col-md-6 question">
+    {{#if isEditing}}
+      <form>
+        <div class="form-group">
+          <label for="question">Question:</label>
+          {{input id="question" class="form-control" value=question}}
+          <br>
+          <label for="description">Description:</label>
+          {{textarea id="description" class="form-control" value=description}}
+        </div>
+
+        <button class="btn btn-primary" {{action 'save'}}>Done</button>
+      </form>
+
+
+    {{else}}
+      <h5 class="author-indent"> - Asked by {{model.author}}</h5>
+
+      <hr>
+
+      <div class="body">
+        {{model.description}}
+      </div>
       <br>
-      <label for="description">Description:</label>
-      {{textarea id="description" class="form-control" value=description}}
-    </div>
-
-    <button class="btn btn-primary" {{action 'save'}}>Done</button>
-  </form>
+      <button class="btn btn-primary" {{action 'edit'}}>Edit</button>
+    {{/if}}
 
 
-{{else}}
-  <h5 class="author-indent"> - Asked by {{model.author}}</h5>
+    <button class="btn btn-danger" {{action 'delete'}}>Delete Question</button>
+    <br><hr>
+    <h3>Answers to {{model.question}}</h3>
+    <br>
+    <ul>
+      {{#each answer in this.answers}}
+        <li>{{#link-to 'answer' answer.id}}{{answer.answer}}{{/link-to}}</li>
+      {{/each}}
+    </ul>
 
-  <hr>
 
-  <div class="body">
-    {{model.description}}
+    <p>{{#link-to 'new-answer' model.id class="btn btn-info"}}Respond to Question{{/link-to}}</p>
+
   </div>
-  <br>
-  <button class="btn btn-primary" {{action 'edit'}}>Edit</button>
-{{/if}}
 
-
-<button class="btn btn-danger" {{action 'delete'}}>Delete Question</button>
-<br><hr><br>
-<ul>
-  {{#each answer in model.answers}}
-    <li>{{#link-to 'answer' answer.id}}{{answer.answer}}{{/link-to}}</li>
-  {{/each}}
-</ul>
-
-
-<p>{{#link-to 'new-answer' model.id class="btn btn-info"}}Respond to Question{{/link-to}}</p>
-{{outlet}}
+  <div class="col-md-6 answer">
+    {{outlet}}
+  </div>
+</div>
