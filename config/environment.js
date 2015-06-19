@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'message-board-cli',
     environment: environment,
-    firebase: 'https://message-board-cli.firebaseio.com',
+    firebase: 'https://message-board-cli.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
